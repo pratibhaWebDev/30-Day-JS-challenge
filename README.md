@@ -1,4 +1,4 @@
-Day 1 Summary: JavaScript Basics
+<h1>Day 1 Summary: JavaScript Basics</h1>
 Activity 1: Variable Declaration
 Task 1: Declared a variable using var and logged its value.
 Task 2: Declared a variable using let and logged its value.
