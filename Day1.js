@@ -1,4 +1,4 @@
-// Day 1
+ // Day 1
 // Activity 1: Variable Declaration 
 // Task 1
 var num=2001
