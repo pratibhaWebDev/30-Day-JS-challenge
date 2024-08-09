@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #img {
+            display: block;
+            width: 300px;
+            height: 200px;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="ChangeText">Change Text</p>
+    <button id="ChangeBtn">Click Me!</button>
+
+    <img id="img" src="img1.jpg" alt="">
+
+    <div id="box"></div>
+    <input type="text" id="myInput" placeholder="Type something...">
+    <p id="displayText">Current Value:</p>
+
+    
+    <form  id="myForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <br>
+
+        <label for="email">Email:</label>
+        <input type="emial" id="email" name="email">
+
+        <br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <button id="addItem">Add Item</button>
+
+    <ul id="myList">
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+    </ul>
+    <script>
+        const ChangeText = document.getElementById('ChangeText')
+        const btnchange = document.getElementById('ChangeBtn')
+        const box = document.getElementById('box')
+        const myList  = document.getElementById('myList')
+        const addItemButton = document.getElementById('addItem');
+
+        btnchange.addEventListener('click', function () {
+            ChangeText.textContent = "It's Change!"
+            ChangeText.style.color = 'red'
+        })
+
+        const myimg = document.getElementById('img')
+        myimg.addEventListener('dblclick', () => {
+            if (myimg.style.display === 'none') {
+                myimg.style.display = "block"
+            } else {
+                myimg.style.display = "none"
+            }
+        })
+
+        box.addEventListener('mouseover', () => {
+            box.style.backgroundColor = 'yellow'
+        })
+
+        box.addEventListener('mouseout', () => {
+            box.style.backgroundColor = 'red'
+        })
+
+        document.addEventListener('keydown', (event) => {
+            console.log('Key down:', event.key);
+        });
+
+        const inputField = document.getElementById('myInput');
+        const displayPara = document.getElementById('displayText')
+        inputField.addEventListener('keyup',()=>{
+            displayPara.textContent=`Current value : ${inputField.value}`
+        })
+
+
+        const form=document.getElementById('myForm')
+        form.addEventListener('submit',(e)=>{
+            e.preventDefault();
+
+            const formData= new FormData(e.target);
+            const data={}
+
+            formData.forEach((value,key)=>{
+                data[key]=value
+            })
+            console.log('Form Data',data)
+            
+        })
+
+        myList.addEventListener('click',(e)=>{
+            if (event.target && event.target.tagName === 'LI'){
+                console.log('Click item:',e.target.textContent)
+            }
+        })
+        function addItem() {
+            const newItem = document.createElement('li');
+            newItem.textContent = `Item ${myList.children.length + 1}`;
+            myList.appendChild(newItem);
+        }
+
+        // Add a click event listener to the button to add new items
+        addItemButton.addEventListener('click', addItem);
+    </script>
+</body>
+
+</html>
