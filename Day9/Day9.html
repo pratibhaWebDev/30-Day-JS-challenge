@@ -1,0 +1,90 @@
+<!-- // Day 9: DOM Manipulation 
+// Task/Activities:
+// Activity 1: Selecting and Manipulating Elements 
+// Task 1: -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg">
+        <h1 id="heading">Html Text Change Using DOM</h1>
+        <ul class="myList">
+            <li>item 1</li>
+            <li class="item2">item 2</li>
+            <li>item 3</li>
+        </ul>
+        <button id="remove">Remove</button>
+
+        <img id="img" src="img1.jpg" alt="">
+        <button class="changeImg">Img Change</button>
+
+        <p id="changePara">This my para</p>
+        <button id="ParaBtn">Change Para Button</button>
+
+        <div id="box"></div>
+    </div>
+
+    <script>
+        const heading = document.getElementById('heading');
+        heading.textContent = "hello It's change"
+        
+        const bg=document.querySelector('.bg')
+        bg.style.backgroundColor="red"
+
+        const newDiv = document.createElement('div')
+        newDiv.textContent="Create Div using Dom"
+        document.body.appendChild(newDiv)
+
+        const ulElement=document.querySelector('.myList')
+        const newLi=document.createElement('li')
+        newLi.textContent="New Item"
+
+        ulElement.appendChild(newLi)
+
+        const item=document.querySelector('.item2')
+
+        const removeBtn=document.getElementById('remove')
+        removeBtn.addEventListener('click',()=>{
+           
+            if (ulElement.lastChild) {
+                ulElement.lastChild.remove();
+            }
+            
+        })
+
+        const imgChange=document.getElementById('img')
+        const btnChange = document.querySelector('.changeImg')
+        btnChange.addEventListener('click',function(){  
+            imgChange.src='img2.jpg'
+            imgChange.style.width="100px"
+        })
+
+
+        const changePara=document.getElementById('changePara')
+        const ParaBtn = document.getElementById('ParaBtn')
+        ParaBtn.addEventListener('click',function(){
+            changePara.textContent="It's change para"
+        })
+
+
+        const box = document.getElementById('box');
+        box.addEventListener('mouseover',(e)=>{
+            e.target.style.borderColor="yellow"
+        })
+    </script>
+</body>
+
+</html>
